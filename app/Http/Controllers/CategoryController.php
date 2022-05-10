@@ -24,11 +24,18 @@ class CategoryController extends Controller
         // ->join('users', 'categories.user_id', 'user_id')
         // ->select('categories.*', 'users.name')->latest()->paginate(5);
 
-        
-        //Eloqent ORM
+
+        //For Select data by Eloqent ORM
         $categories = Category::latest()->paginate(5);
+
+
+
+        // For Temporary delete data 
         $trachCat = Category::onlyTrashed()->latest()->paginate(3);
         
+
+
+
         //Query builder with pagination  // Anjatel Catrgori-i funkcian u hanel index.bladi-um ayd funkcian
         // $categories = DB::table('categories')->latest()->paginate(5);
         
@@ -140,6 +147,19 @@ class CategoryController extends Controller
 
 
 
+        public function Restore($id){
+            $delete = Category::withTrashed()->find($id)->restore();
+            return Redirect()->back()->with('success', 'Category Restored Successfuly');
+        }
+
+
+        public function Pdelete($id){
+
+            $delete = Category::onlyTrashed()->find($id)->forceDelete();
+
+            return Redirect()->back()->with('success', 'Category Permanently Deleted');
+
+        }
 
 
 

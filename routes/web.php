@@ -27,10 +27,15 @@ Route::get('category/all', [CategoryController::class, 'AllCat'])->name('all.cat
 Route::post('category/add', [CategoryController::class, 'AddCat'])->name('store.category');
 
 Route::get('catrgory/edit/{id}', [CategoryController::class, 'Edit']);
-
 Route::POST('catrgory/update/{id}', [CategoryController::class, 'Update']);
 
 Route::get('softdelete/category/{id}', [CategoryController::class, 'SoftDelete']);
+
+
+Route::get('catrgory/restore/{id}', [CategoryController::class, 'Restore']);
+
+Route::get('pdelete/catrgory/{id}', [CategoryController::class, 'Pdelete']);
+
 
 
 
