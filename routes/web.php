@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CategoryController; 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\MultiPictureController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,12 +40,19 @@ Route::get('pdelete/catrgory/{id}', [CategoryController::class, 'Pdelete']);
 /// For Brand routs
 
 Route::get('brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
-
 Route::post('brand/add', [BrandController::class, 'StoreBrand'])->name('store.brand');
-
 Route::get('brand/edit/{id}', [BrandController::class, 'Edit']);
 Route::POST('brand/update/{id}', [BrandController::class, 'Update']);
 Route::get('brand/delete/{id}', [BrandController::class, 'Delete']);
+
+
+//Multi Image upload
+
+Route::get('multi/image', [MultiPictureController::class, 'Multipic'])->name('multi.image');
+Route::post('multi/add', [MultiPictureController::class, 'StoreImg'])->name('store.image');
+
+
+
 
 
 
