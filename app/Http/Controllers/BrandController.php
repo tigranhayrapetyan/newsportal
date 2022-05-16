@@ -9,6 +9,13 @@ use Image;
 
 class BrandController extends Controller
 {
+
+        //Middlewere 
+        public function __construct(){
+            $this->middleware('auth');
+        }
+
+        
     
     public function AllBrand(){
 

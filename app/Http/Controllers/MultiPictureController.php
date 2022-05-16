@@ -10,6 +10,13 @@ use App\Models\Multipic;
 
 class MultiPictureController extends Controller
 {
+
+    //Middlewere 
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
+    //Select all datas from database and send to .index page 
     public function Multipic(){
 
         $images = Multipic::all();

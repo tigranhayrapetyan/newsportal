@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+    //Middlewere 
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
+//Select all datas from database, paginate and send to .index  page 
     public function AllCat(){
         
         // Eloquent ORM

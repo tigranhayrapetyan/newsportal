@@ -54,6 +54,15 @@ Route::post('multi/add', [MultiPictureController::class, 'StoreImg'])->name('sto
 
 
 
+// email verification route
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+
+
+
 
 
 // Category Controller end
