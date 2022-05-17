@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Image;
 use App\Models\Multipic;
+use Auth;
 
 
 class MultiPictureController extends Controller
@@ -46,10 +47,19 @@ class MultiPictureController extends Controller
         } //end of foreache
 
         return Redirect()->back()->with('success', 'Brand Inserted Successfully');
-
-
-
     }
+
+
+//Admin User logout method 
+    public function Logout(){
+        Auth::logout();
+        return Redirect()->route('login')->with('success', 'User Logout'); 
+    }
+
+
+
+
+
 
 
 }
