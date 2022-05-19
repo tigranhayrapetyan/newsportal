@@ -18,7 +18,7 @@ use App\Http\Controllers\MultiPictureController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 //Category Controller start
