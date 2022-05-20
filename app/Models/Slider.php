@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Multipic extends Model
+class Slider extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'title',
+        'description',
         'image',
-
-
     ];
 }

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CategoryController; 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MultiPictureController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,8 @@ use App\Http\Controllers\MultiPictureController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $brands = DB::table('brands')->get();
+    return view('home', compact('brands'));
 });
 
 //Category Controller start
@@ -83,3 +85,9 @@ Route::middleware([
 
 // Admin panel User Logout rout 
 Route::get('user/logout', [MultiPictureController::class, 'Logout'])->name('user.logout');
+
+//admin panel Slider 
+
+Route::get('home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
+Route::get('add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
+Route::post('store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
