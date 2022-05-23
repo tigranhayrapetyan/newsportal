@@ -19,13 +19,13 @@
             <table class="table">
               <thead class="table-primary">
                 <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Slider Title</th>
-                  <th scope="col">Slider Description</th>
-                  <th scope="col">Slider Image</th>
-                  <th scope="col">Cteated At</th>
-                  <th scope="col">Last update</th>
-                  <th scope="col">Action</th>
+                  <th scope="col" width="5%">No</th>
+                  <th scope="col" width="5%">Slider Title</th>
+                  <th scope="col" width="25%">Slider Description</th>
+                  <th scope="col" width="15%">Slider Image</th>
+                  <th scope="col" width="15%">Cteated At</th>
+                  <th scope="col" width="15%">Last update</th>
+                  <th scope="col" width="15%">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,8 +47,8 @@
                       {{Carbon\Carbon::parse($slider->updated_at)->diffForHumans() }}
                       
                     </td>
-                    <td> <a href="{{ url('slider/edit/'.$slider->id) }}" class="btn btn-info">Edit</a>
-                    <a href="{{ url('slider/delete/'.$slider->id) }}" onclick="return confirm('Are you shure that you want to delete?')" class="btn btn-danger">Delete</a>
+                    <td> <a href="{{ url('edit/slider/'.$slider->id) }}" class="btn btn-info">Edit</a>
+                    <a href="{{ url('delete/slider/'.$slider->id) }}" onclick="return confirm('Are you shure that you want to delete?')" class="btn btn-danger">Delete</a>
                   </td> 
                 </tr>
                 

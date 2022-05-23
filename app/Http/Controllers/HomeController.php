@@ -27,7 +27,7 @@ public function StoreSlider(Request $request){
     $validatedData = $request->validate([
         'title' => 'required|unique:sliders|min:3',
         'description' => 'required',
-        'image' => 'required|mimes:jpg.jpeg,png',
+        'image' => 'required',
     ],
     [
         //to show personal message in validation
@@ -58,5 +58,78 @@ public function StoreSlider(Request $request){
 }
 
 
+
+public function SliderUpdate(Request $request, $id){
+
+    $validatedData = $request->validate([
+        'title' => 'required|min:3',
+    ],
+    [
+        //to show personal message in validation
+        'title.required' => 'Please imput some Title',
+    ]);
+
+    $old_image = $request->old_image;
+    $slider_image = $request->file('image');
+
+
+    if($slider_image){
+
+                // for creating validation of unique  photo
+            $name_gen = hexdec(uniqid());
+            $img_ext = strtolower($slider_image->getClientOriginalExtension());
+            $img_name = $name_gen.'.'.$img_ext;
+            $up_location = 'image/slider/';
+            $last_img = $up_location.$img_name;
+            $$slider_image->move($up_location, $img_name);
+
+            //Upload     insert
+            
+            unlink($old_image);
+
+            Slider::find($id)->update([
+                'title' => $request ->title, 
+                'description' => $request ->description,
+                'image' => $last_img,
+                'created_at' => Carbon::now()
+            ]);
+            
+            return Redirect()->back()->with('success', 'Slider Updated Successfully');
+
+    }else{
+        
+             Slider::find($id)->update([
+                'title' => $request ->title, 
+                'description' => $request ->description, 
+                'created_at' => Carbon::now()
+            ]);
+            
+            return Redirect()->back()->with('success', 'Slider Updated Successfully');
+    }
+
+   
+
+
+
+
+
+}
+
+
+
+
+
+
+            public function SliderDelete($id){
+                       //Nkar@ jnjeluhamar
+        $image = Slider::find($id);
+        $old_image = $image->image;
+        unlink($old_image);
+
+        // BDic tvyalner@ jnjelu hamar
+        Slider::find($id)->delete();
+                    
+        return Redirect()->back()->with('success', 'Slider Deleted Successfuly');
+            }
 
 }

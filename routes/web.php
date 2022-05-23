@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MultiPictureController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeAboutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,3 +92,13 @@ Route::get('user/logout', [MultiPictureController::class, 'Logout'])->name('user
 Route::get('home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
 Route::get('add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
 Route::post('store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
+Route::post('edit/slider/{id}', [HomeController::class, 'SliderUpdate'])->name('edit.slider');
+Route::get('delete/slider/{id}', [HomeController::class, 'SliderDelete']);
+
+
+
+// Home about 
+
+Route::get('home/about', [HomeAboutController::class, 'HomeAbout'])->name('home.about');
+
+
