@@ -6,18 +6,28 @@
 <div class="py-12">
   <div class="container col-md-12">
     <div class="row">
-    <h4>Home About </h4>
-    <a href="{{route('add.slider')}}"> <button class="btn btn-info">Home Add About</button> </a>
-    <br>
-    <br>
-       
-    <div class="col-md-12">
+      <h4>Home About </h4>
+      <a href="{{route('add.about')}}"> <button class="btn btn-info">Home Add About</button> </a>
+      <br>
+      <br>
+      
+      <div class="col-md-12">
+        <div class="card">
+          
+          
+          <div class="card-header"> All About Data</div>
+          <table class="table">
           <div class="card">
-            
-            
-            <div class="card-header"> All About Data</div>
-            <table class="table">
-              <thead class="table-primary">
+                @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{session('success')}}</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            @endif
+            </div>
+            <thead class="table-primary">
                 <tr>
                   <th scope="col" width="5%">No</th>
                   <th scope="col" width="20%">Home Title</th>
@@ -50,20 +60,5 @@
           
         </div>
         
-        <div class="col-md-12">
-          <div class="card">
-            @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>{{session('success')}}</strong> 
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    @endif
-    
-    
-
-</div>
-</div>
 
 @endsection
