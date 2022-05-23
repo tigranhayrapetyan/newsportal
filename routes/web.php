@@ -92,8 +92,8 @@ Route::get('user/logout', [MultiPictureController::class, 'Logout'])->name('user
 Route::get('home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
 Route::get('add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
 Route::post('store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
-//add edit get method to corredt after
-Route::post('edit/slider/{id}', [HomeController::class, 'SliderUpdate'])->name('edit.slider');
+Route::get('edit/slider/{id}', [HomeController::class, 'SliderEdit']);
+Route::post('update/slider/{id}', [HomeController::class, 'SliderUpdate']);
 Route::get('delete/slider/{id}', [HomeController::class, 'SliderDelete']);
 
 
@@ -104,7 +104,8 @@ Route::get('home/about', [HomeAboutController::class, 'HomeAbout'])->name('home.
 Route::get('add/about', [HomeAboutController::class, 'AddAbout'])->name('add.about');
 Route::post('store/about', [HomeAboutController::class, 'StoreAbout'])->name('store.about');
 Route::get('about/edit/{id}', [HomeAboutController::class, 'Edit']);
-Route::post('edit/about/{id}', [HomeAboutController::class, 'AboutUpdate'])->name('edit.about');
+Route::post('edit/about/{id}', [HomeAboutController::class, 'AboutUpdate'])->name('update.about');
+Route::get('about/delete/{id}', [HomeAboutController::class, 'AboutDelete']);
 
 
 

@@ -58,6 +58,15 @@ public function StoreSlider(Request $request){
 }
 
 
+public function SliderEdit($id){
+
+    $sliders = Slider::find($id);
+
+    return view ('admin.slider.edit', compact('sliders'));
+}
+
+
+
 
 public function SliderUpdate(Request $request, $id){
 
@@ -81,7 +90,7 @@ public function SliderUpdate(Request $request, $id){
             $img_name = $name_gen.'.'.$img_ext;
             $up_location = 'image/slider/';
             $last_img = $up_location.$img_name;
-            $$slider_image->move($up_location, $img_name);
+            $slider_image->move($up_location, $img_name);
 
             //Upload     insert
             
@@ -93,8 +102,8 @@ public function SliderUpdate(Request $request, $id){
                 'image' => $last_img,
                 'created_at' => Carbon::now()
             ]);
-            
-            return Redirect()->back()->with('success', 'Slider Updated Successfully');
+
+            return Redirect()->route('home.slider')->with('success', 'Slider Updated Successfully');
 
     }else{
         
@@ -103,8 +112,8 @@ public function SliderUpdate(Request $request, $id){
                 'description' => $request ->description, 
                 'created_at' => Carbon::now()
             ]);
-            
-            return Redirect()->back()->with('success', 'Slider Updated Successfully');
+
+            return Redirect()->route('home.slider')->with('success', 'Slider Updated Successfully');
     }
 
    

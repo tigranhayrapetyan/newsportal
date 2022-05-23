@@ -35,7 +35,7 @@
 
                 <div class="form-group">
 													<label for="exampleFormControlTextarea1">Short Description</label>
-													<textarea class="form-control" name="short_dis" rows="3" placeholder="{{ $homeabout->short_dis }}" value="{{ $homeabout->short_dis }}"></textarea>
+													<textarea class="form-control" name="short_dis" rows="3">{{ $homeabout->short_dis }}</textarea>
                           @error('short_dis')
           <span class="text-danger">{{$message}} </span>
           @enderror
@@ -43,7 +43,7 @@
 										
                         <div class="form-group">
 													<label for="exampleFormControlTextarea1">Long Description</label>
-													<textarea class="form-control" name="long_dis" rows="3" placeholder="{{ $homeabout->long_dis }}" value="{{ $homeabout->long_dis }}"></textarea>
+													<textarea class="form-control" name="long_dis" rows="3"  >{{$homeabout->long_dis}}</textarea>
                           @error('long_dis')
           <span class="text-danger">{{$message}} </span>
           @enderror

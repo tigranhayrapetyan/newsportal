@@ -74,4 +74,11 @@ class HomeAboutController extends Controller
     }
 
 
+    public function AboutDelete($id){
+        HomeAbout::find($id)->delete();
+                    
+        return Redirect()->back()->with('success', 'Information Deleted Successfuly');
+    }
+
+
 }
