@@ -35,7 +35,7 @@ class MultiPictureController extends Controller
         foreach($image as $multi_img){
 
         $name_gen = hexdec(uniqid()).'.'.$multi_img->getClientOriginalExtension();
-        Image::make($multi_img)->resize(300,200)->Save('image/multi/'.$name_gen);
+        Image::make($multi_img)->Save('image/multi/'.$name_gen);
         $last_img = 'image/multi/'.$name_gen;
 
 

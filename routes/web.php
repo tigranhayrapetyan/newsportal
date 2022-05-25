@@ -8,6 +8,8 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MultiPictureController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeAboutController;
+use App\Models\Multipic;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +23,8 @@ use App\Http\Controllers\HomeAboutController;
 
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
-    return view('home', compact('brands'));
+    $images = Multipic::all();
+    return view('home', compact('brands', 'images'));
 });
 
 //Category Controller start
@@ -50,7 +53,6 @@ Route::get('brand/delete/{id}', [BrandController::class, 'Delete']);
 
 
 //Multi Image upload
-
 Route::get('multi/image', [MultiPictureController::class, 'Multipic'])->name('multi.image');
 Route::post('multi/add', [MultiPictureController::class, 'StoreImg'])->name('store.image');
 

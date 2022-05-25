@@ -1,17 +1,16 @@
-<x-app-layout>
-  <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      <b>  All Multipicture</b>
-     
-      
-    </h2>
-  </x-slot>
-    <div class="py-12">
+@extends('admin.admin_master')
+
+@section('admin')
+
+
+
+`
+    <div class="py-8"> 
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-        
-        <div class="card-group">
+          <div class="card-header">All Multipicture</div>
+          <div class="card-group">
         @foreach($images as $multi)
 
         <div class="col-md-4 mt-5">
@@ -57,18 +56,7 @@
             </div>
 
             </div>
-</div>
+</div>    
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-    </div>
-    </div>
-</x-app-layout>
+@endsection
