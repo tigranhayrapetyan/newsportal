@@ -112,3 +112,6 @@ Route::get('contact/edit/{id}', [ContactController::class, 'EditContact']);
 Route::get('contact/delete/{id}', [ContactController::class, 'ContactDelete']);
 Route::post('contact/update/{id}', [ContactController::class, 'ContactUpdate']);
 Route::get('contacts', [ContactController::class, 'Contacts'])->name('contacts');
+Route::post('form/message', [ContactController::class, 'FormMessage'])->name('form.message');
+Route::get('received/contact', [ContactController::class, 'ReceivedContact'])->name('received.contact');
+Route::get('message/delete/{id}', [ContactController::class, 'MessageDelete']);

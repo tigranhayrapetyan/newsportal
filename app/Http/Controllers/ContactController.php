@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Contact;
+use App\Models\ContactForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -77,6 +78,48 @@ public function ContactUpdate(Request $request, $id){
 public function Contacts(){
     $contacts = Contact::first();
     return view('pages.contacts', compact('contacts'));
+}
+
+
+
+public function FormMessage(Request $request){
+
+    $validatedData = $request->validate([
+        'name' => 'required|min:3',
+        'email' => 'required',
+        'subject' => 'required',
+        'message' => 'required',
+    ],
+    [
+        //to show personal message in validation
+        'name.min:3' => 'Please imput correct Name',
+ 
+    ]);
+    //Upload     insert
+    ContactForm::insert([
+        'name' => $request ->name, 
+        'email' => $request ->email, 
+        'subject' => $request ->subject, 
+        'message' => $request ->message, 
+        'created_at' => Carbon::now()
+    ]);
+    
+    return Redirect()->route('contacts')->with('success', 'Information Successfully Sent');
+
+}
+
+public function ReceivedContact(){
+    $messages = ContactForm::All();
+    return view('admin.contact.received', compact('messages'));
+}
+
+
+public function MessageDelete($id){
+
+    ContactForm::find($id)->delete();
+                    
+    return Redirect()->back()->with('success', 'Information Deleted Successfuly');
+
 }
 
 

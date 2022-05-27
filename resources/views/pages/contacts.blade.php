@@ -53,7 +53,15 @@
 
     <div class="row mt-5 justify-content-center" data-aos="fade-up">
       <div class="col-lg-10">
-        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+        <div class="div">  
+          @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>{{session('success')}}</strong> 
+          @endif
+          </div>
+       
+        <form action="{{route('form.message')}}" method="POST">
+         @csrf
           <div class="form-row">
             <div class="col-md-6 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -72,11 +80,7 @@
             <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
             <div class="validate"></div>
           </div>
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
-          </div>
+
           <div class="text-center"><button type="submit">Send Message</button></div>
         </form>
       </div>

@@ -107,6 +107,13 @@
                                 
                               </a>
                             </li>
+
+                            <li >
+                              <a class="sidenav-item-link" href="{{route('received.contact')}}">
+                                <span class="nav-text">Received Contact Forms</span>
+                                
+                              </a>
+                            </li>
                           
                         
 
