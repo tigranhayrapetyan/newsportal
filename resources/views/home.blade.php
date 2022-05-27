@@ -2,6 +2,7 @@
 
 @section('home_content')
 
+@include('layouts.body.slider')
 
 <!-- ======= About Us Section ======= -->
 

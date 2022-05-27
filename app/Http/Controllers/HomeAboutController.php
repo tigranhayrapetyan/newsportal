@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Image;
 use App\Models\HomeAbout;
+use App\Models\Multipic;
 use Auth;
 
 
@@ -79,6 +80,13 @@ class HomeAboutController extends Controller
                     
         return Redirect()->back()->with('success', 'Information Deleted Successfuly');
     }
+
+
+    public function Portfolio(){
+        $images = Multipic::all();
+        return view('pages.portfolio', compact('images'));
+    }
+
 
 
 }
