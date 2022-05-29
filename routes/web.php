@@ -9,6 +9,8 @@ use App\Http\Controllers\MultiPictureController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeAboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ChangePassController;
+
 use App\Models\Multipic;
 
 /*
@@ -115,3 +117,9 @@ Route::get('contacts', [ContactController::class, 'Contacts'])->name('contacts')
 Route::post('form/message', [ContactController::class, 'FormMessage'])->name('form.message');
 Route::get('received/contact', [ContactController::class, 'ReceivedContact'])->name('received.contact');
 Route::get('message/delete/{id}', [ContactController::class, 'MessageDelete']);
+
+
+
+// Change Password
+Route::get('change/password', [ChangePassController::class, 'ChangePassword'])->name('change.password');
+
