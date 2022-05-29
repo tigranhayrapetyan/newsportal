@@ -2,139 +2,47 @@
 
 @section('admin')
 
-<div class="content-wrapper">
-          <div class="content">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="card card-default">
+<div class="card card-default">
                   <div class="card-header card-header-border-bottom">
-                    <h2>Masked Input</h2>
+                    <h2>Change Password</h2>
                   </div>
                   <div class="card-body">
-                    <label class="text-dark font-weight-medium" for=""
-                      >Date input</label
-                    >
+                    <form method="POST" action="{{route('password.update')}}" class="form-pill">
+                      @csrf
+                    <label class="text-dark font-weight-medium" for="">Current Password</label>
                     <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-calendar-range"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control"
-                        data-mask="00/00/0000"
-                        placeholder=""
-                        aria-label=""
-                      />
+                      <input type="password" name="current_password"id="current_password" class="form-control" placeholder="Current password">
+                    @error('current_password')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror               
                     </div>
-                    <p style="font-size: 90%">ex. 99/99/9999</p>
-                    <label class="text-dark mt-4 font-weight-medium" for=""
-                      >Phone input</label
-                    >
+
+
+
+
+                    <label class="text-dark mt-4 font-weight-medium" for="">New Password</label>
                     <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-phone"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control"
-                        data-mask="(999) 999-9999"
-                        placeholder=""
-                        aria-label=""
-                      />
-                    </div>
-                    <p style="font-size: 90%">ex. (999) 999-9999</p>
-                    <label class="text-dark mt-4 font-weight-medium" for=""
-                      >Taxpayer Identification Numbers</label
-                    >
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-currency-usd"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control"
-                        data-mask="99-9999999"
-                        placeholder=""
-                        aria-label=""
-                      />
-                    </div>
-                    <p style="font-size: 90%">ex. 99-9999999</p>
-                    <label class="text-dark mt-4 font-weight-medium" for=""
-                      >Social Security Number</label
-                    >
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-security-account-outline"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control"
-                        data-mask="999-99-9999"
-                        placeholder=""
-                        aria-label=""
-                      />
-                    </div>
-                    <p style="font-size: 90%">ex. 999-99-9999</p>
-                    <label class="text-dark mt-4 font-weight-medium" for=""
-                      >Eye Script</label
-                    >
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-eye"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control"
-                        data-mask="~9.99 ~9.99 999"
-                        placeholder=""
-                        aria-label=""
-                      />
-                    </div>
-                    <p style="font-size: 90%">ex. ~9.99 ~9.99 999</p>
-                    <label class="text-dark mt-4 font-weight-medium" for=""
-                      >Credit Card Number</label
-                    >
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-credit-card"></i>
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control"
-                        data-mask="9999 9999 9999 9999"
-                        placeholder=""
-                        aria-label=""
-                      />
-                    </div>
-                    <p style="font-size: 90%">ex. 9999 9999 9999 9999</p>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="New password">
+                    @error('password')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror       
                   </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="card card-default">
-                  <div class="card-header card-header-border-bottom">
-                    <h2>Multiple Select</h2>
+
+                    <label class="text-dark mt-4 font-weight-medium" for="">Confirm New Password</label>
+                    <div class="input-group mb-2">
+                    <input type="password"  name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm New password">
+                    @error('password_confirmation')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror       
                   </div>
-                  <div class="card-body">
+
 
                   </div>
+
+<button type="submit"class="btn btn-primary btn-default">Save</button>
+
+</form>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
 
 @endsection
