@@ -13,6 +13,7 @@ class ChangePassController extends Controller
         return view('admin.body.change_password');
     }
 
+
     public function UpdatePassword(Request $request){
         $validatedData = $request->validate([
             'current_password' => 'required|',
@@ -29,7 +30,33 @@ class ChangePassController extends Controller
         else {
             return redirect()->back()->with('error', 'Current Password IS Invalid');
         }
+    }  
 
-}  
+
+
+    public function ProfileUpdate(){
+        if(Auth::user()){
+            $user = User::find(Auth::user()->id);
+            if($user){
+                return view('admin.body.update_profile', compact('user'));
+            }
+        }
+    }
+
+
+    public function UpdateUserProfile(Request $request){
+        $user = User::find(Auth::user()->id);
+        if($user){
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+            $user->Save();
+            return Redirect()->back()->with('success', 'Profile updated successfuly');
+        }else{
+            return Redirect()->back()->with('error', 'Profile NOT updated');
+        }
+
+    }
+
+
 
 }
