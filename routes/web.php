@@ -128,3 +128,6 @@ Route::post('password/update', [ChangePassController::class, 'UpdatePassword'])-
 Route::get('profile/update', [ChangePassController::class, 'ProfileUpdate'])->name('profile.update');
 Route::post('/update/user/profile', [ChangePassController::class, 'UpdateUserProfile'])->name('update.user.profile');
 
+//User profile picture update
+Route::get('profile/picture/update', [ChangePassController::class, 'ProfilePicture'])->name('change.profile.picture');
+Route::post('/update/user/profile/picture', [ChangePassController::class, 'UpdateProfilePicture'])->name('update.user.profile.picture');

@@ -59,4 +59,63 @@ class ChangePassController extends Controller
 
 
 
+
+    public function ProfilePicture(){
+        if(Auth::user()){
+            $userphoto = User::find(Auth::user()->id);
+            if($userphoto){
+                return view('admin.body.update_profile_picture', compact('userphoto'));
+            }
+        }
+    }
+
+
+
+    public function UpdateProfilePicture(Request $request){
+        $user = User::find(Auth::user()->id);
+        if($user){
+
+            $old_image = $request->old_image;
+            $slider_image = $request->file('image');
+                
+            if($slider_image){
+        
+                        // for creating validation of unique  photo
+                    $name_gen = hexdec(uniqid());
+                    $img_ext = strtolower($slider_image->getClientOriginalExtension());
+                    $img_name = $name_gen.'.'.$img_ext;
+                    $up_location = 'storage/profile-photos/';
+                    $last_img = $up_location.$img_name;
+                    $slider_image->move($up_location, $img_name);
+        
+                    //Upload     insert
+                    
+                    unlink($old_image);
+        
+                    Slider::find($id)->update([
+                        'title' => $request ->title, 
+                        'description' => $request ->description,
+                        'image' => $last_img,
+                        'created_at' => Carbon::now()
+                    ]);
+        
+                    return Redirect()->back()->with('success', 'Profile updated successfuly');
+        
+            }else{
+                
+                     Slider::find($id)->update([
+                        'title' => $request ->title, 
+                        'description' => $request ->description, 
+                        'created_at' => Carbon::now()
+                    ]);
+        
+                    return Redirect()->back()->with('success', 'Profile updated successfuly');
+            }
+ 
+        }
+
+    }
+
+
+
 }

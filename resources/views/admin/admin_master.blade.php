@@ -155,7 +155,7 @@
                         </a>
                       </li>
                       <li>
-                        <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
+                        <a href="{{route('change.profile.picture')}}"> <i class="mdi mdi-diamond-stone"></i> Change Profile Picture </a>
                       </li>
                       <li>
                         <a href="#"> <i class="mdi mdi-settings"></i> Account Setting </a>
