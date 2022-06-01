@@ -30,7 +30,7 @@ class BrandController extends Controller
          
                         $validatedData = $request->validate([
             'brand_name' => 'required|unique:brands|min:3',
-            'brand_image' => 'required|mimes:jpg.jpeg,png',
+            // 'brand_image' => 'required|mimes:jpg.jpeg,png',
         ],
         [
             //to show personal message in validation
@@ -64,7 +64,11 @@ class BrandController extends Controller
             'created_at' => Carbon::now()
         ]);
         
-        return Redirect()->back()->with('success', 'Brand Inserted Successfully');
+        $notification = array(
+            'message' => 'Brand Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
 
 
     }
@@ -117,16 +121,25 @@ class BrandController extends Controller
                     'brand_image' => $last_img,
                     'created_at' => Carbon::now()
                 ]);
-                
-                return Redirect()->back()->with('success', 'Brand Updated Successfully');
+
+                $notification = array(
+                    'message' => 'Brand Updated Successfully',
+                    'alert-type' => 'info'
+                );
+                return Redirect()->back()->with($notification);
+
 
         }else{
                 Brand::find($id)->update([
                     'brand_name' => $request ->brand_name, 
                     'created_at' => Carbon::now()
                 ]);
-                
-                return Redirect()->back()->with('success', 'Brand Updated Successfully');
+
+                $notification = array(
+                    'message' => 'Brand Updated Successfully',
+                    'alert-type' => 'info'
+                );
+                return Redirect()->back()->with($notification);
         }
 
        
@@ -144,8 +157,11 @@ class BrandController extends Controller
 
         // BDic tvyalner@ jnjelu hamar
         Brand::find($id)->delete();
-                    
-        return Redirect()->back()->with('success', 'Brand Soft Deleted Successfuly');
+        $notification = array(
+            'message' => 'Brand Soft Deleted Successfuly',
+            'alert-type' => 'error'
+        );
+        return Redirect()->back()->with($notification);
 
     }
 
